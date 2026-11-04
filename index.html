@@ -1,0 +1,759 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 AppleColorEmoji;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="id">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <title>MPI Keamanan Pangan & Bumbu Rempah - Bu Fezri | SMK YPKK 2 Sleman</title>\
+    <!-- Tailwind CSS CDN -->\
+    <script src="https://cdn.tailwindcss.com"></script>\
+    <!-- FontAwesome Icons -->\
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">\
+    <!-- Google Fonts: Poppins & Fredoka -->\
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">\
+\
+    <style>\
+        body \{\
+            font-family: 'Poppins', sans-serif;\
+            background-color: #FFFDF0;\
+        \}\
+        .font-header \{\
+            font-family: 'Fredoka', cursive, sans-serif;\
+        \}\
+        .bg-pattern \{\
+            background-color: #FFFDF0;\
+            background-image: radial-gradient(#F59E0B 0.8px, transparent 0.8px), radial-gradient(#F59E0B 0.8px, #FFFDF0 0.8px);\
+            background-size: 32px 32px;\
+            background-position: 0 0, 16px 16px;\
+        \}\
+        .tab-active \{\
+            background-color: #D97706 !important;\
+            color: #FFFFFF !important;\
+            box-shadow: 0 10px 15px -3px rgba(217, 119, 6, 0.3);\
+            transform: translateY(-2px);\
+        \}\
+        /* Custom Scrollbar */\
+        ::-webkit-scrollbar \{ width: 8px; \}\
+        ::-webkit-scrollbar-track \{ background: #FEF3C7; \}\
+        ::-webkit-scrollbar-thumb \{ background: #F59E0B; border-radius: 6px; \}\
+        /* Card Flip Style for Memory Game */\
+        .perspective \{ perspective: 1000px; \}\
+        .transform-style-3d \{ transform-style: preserve-3d; \}\
+        .backface-hidden \{ backface-visibility: hidden; \}\
+        .rotate-y-180 \{ transform: rotateY(180deg); \}\
+    </style>\
+</head>\
+<body class="bg-pattern min-h-screen text-gray-800 flex flex-col selection:bg-amber-200">\
+\
+    <!-- TOP HEADER / NAVBAR -->\
+    <header class="bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 text-white shadow-xl sticky top-0 z-50 border-b-4 border-amber-900">\
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">\
+            <div class="flex items-center space-x-3">\
+                <div class="bg-white p-2.5 rounded-2xl text-amber-600 shadow-lg transform -rotate-3 hover:rotate-0 transition">\
+                    <i class="fa-solid fa-utensils text-2xl md:text-3xl"></i>\
+                </div>\
+                <div>\
+                    <h1 class="font-header text-xl md:text-2xl font-bold tracking-wide flex items-center gap-2">\
+                        MEDIA PEMBELAJARAN INTERAKTIF\
+                        <span class="bg-amber-900/60 text-amber-200 text-xs px-2.5 py-0.5 rounded-full font-sans border border-amber-400/30">KULINER XII</span>\
+                    </h1>\
+                    <p class="text-xs text-amber-100 flex items-center gap-1.5 font-medium">\
+                        <i class="fa-solid fa-chalkboard-user text-amber-300"></i> Bu Fezri Tria Prawesthi, S.Pd., Gr. | SMK YPKK 2 Sleman\
+                    </p>\
+                </div>\
+            </div>\
+\
+            <!-- NAVIGATION BUTTONS -->\
+            <nav class="flex flex-wrap gap-2 w-full md:w-auto justify-center">\
+                <button onclick="switchTab('materi')" id="btn-materi" class="tab-btn tab-active bg-amber-800/60 hover:bg-amber-700 px-4 py-2 rounded-2xl transition font-semibold text-sm flex items-center gap-2 border border-amber-400/20">\
+                    <i class="fa-solid fa-book-open"></i> Modul Materi\
+                </button>\
+                <button onclick="switchTab('aktivitas')" id="btn-aktivitas" class="tab-btn bg-amber-800/60 hover:bg-amber-700 px-4 py-2 rounded-2xl transition font-semibold text-sm flex items-center gap-2 border border-amber-400/20">\
+                    <i class="fa-solid fa-flask text-amber-300"></i> Lab & Simulasi\
+                </button>\
+                <button onclick="switchTab('evaluasi')" id="btn-evaluasi" class="tab-btn bg-amber-800/60 hover:bg-amber-700 px-4 py-2 rounded-2xl transition font-semibold text-sm flex items-center gap-2 border border-amber-400/20">\
+                    <i class="fa-solid fa-gamepad text-yellow-300"></i> Zone Kuis (70 Soal)\
+                </button>\
+            </nav>\
+        </div>\
+    </header>\
+\
+    <!-- MAIN CONTAINER -->\
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full space-y-6">\
+\
+        <!-- WELCOME BANNER -->\
+        <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 text-white rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden border-4 border-white flex flex-col md:flex-row items-center justify-between gap-6">\
+            <div class="space-y-3 z-10 text-center md:text-left">\
+                <span class="bg-white/20 backdrop-blur-md text-amber-100 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-white/30 inline-block">\
+                    <i class="fa-solid fa-certificate"></i> Dapur Kuliner SMK YPKK 2 Sleman\
+                </span>\
+                <h2 class="font-header text-3xl md:text-4xl font-extrabold tracking-wide">\
+                    Keamanan Pangan, Bumbu & Rempah\
+                </h2>\
+                <p class="text-amber-100 max-w-2xl text-sm md:text-base leading-relaxed">\
+                    Halo siswa-siswi hebat kelas XII Kuliner! Mari pelajari klasifikasi rempah, pengolahan bumbu dasar, standar mutu keamanan pangan, serta simulasi penyimpanan ideal bersama <strong>Bu Fezri Tria Prawesthi</strong>!\
+                </p>\
+            </div>\
+            <div class="z-10 flex-shrink-0 bg-white/10 backdrop-blur-md p-4 rounded-3xl border border-white/30 text-center shadow-xl">\
+                <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=160&auto=format&fit=crop&q=80" alt="Rempah" class="w-20 h-20 mx-auto rounded-full object-cover border-4 border-white shadow-lg mb-2">\
+                <div class="font-bold text-sm text-white">Bu Fezri Tria Prawesthi</div>\
+                <div class="text-xs text-amber-200">Guru Hidangan Kontinental</div>\
+            </div>\
+        </div>\
+\
+        <!-- ================= TAB 1: MODUL MATERI ================= -->\
+        <section id="tab-materi" class="space-y-6">\
+            <div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl border-2 border-amber-200 space-y-8">\
+                \
+                <!-- HEADER SEKSI -->\
+                <div class="border-b-2 border-amber-100 pb-4 flex flex-wrap justify-between items-center gap-2">\
+                    <h3 class="font-header text-2xl font-bold text-amber-900 flex items-center gap-3">\
+                        <i class="fa-solid fa-book-bookmark text-amber-600"></i> Ringkasan Modul Pembelajaran Resmi\
+                    </h3>\
+                    <span class="text-xs bg-amber-100 text-amber-800 font-bold px-3 py-1 rounded-full">Dasar Kuliner XII</span>\
+                </div>\
+\
+                <!-- CARDS PENGELOMPOKAN AWAL -->\
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">\
+                    <!-- 1. Pengertian -->\
+                    <div class="bg-amber-50/80 rounded-2xl p-6 border-2 border-amber-200 hover:shadow-lg transition space-y-3">\
+                        <div class="w-12 h-12 bg-amber-500 text-white rounded-2xl flex items-center justify-center text-xl shadow-md font-bold">\
+                            <i class="fa-solid fa-pepper-hot"></i>\
+                        </div>\
+                        <h4 class="font-bold text-lg text-amber-900">1. Pengertian Bumbu vs Rempah</h4>\
+                        <div class="text-xs md:text-sm text-gray-700 space-y-2 leading-relaxed">\
+                            <p><strong>Rempah (Spices):</strong> Tanaman aromatik alami dari bagian tumbuhan (akar, biji, bunga, kayu) yang memberi aroma dan rasa khas pada hidangan.</p>\
+                            <p><strong>Bumbu:</strong> Ramuan dari beberapa rempah segar/kering yang dicampur dengan bahan olahan seperti kecap, cuka, garam, tauco, atau terasi.</p>\
+                        </div>\
+                    </div>\
+\
+                    <!-- 2. Fungsi Utama -->\
+                    <div class="bg-orange-50/80 rounded-2xl p-6 border-2 border-orange-200 hover:shadow-lg transition space-y-3">\
+                        <div class="w-12 h-12 bg-orange-500 text-white rounded-2xl flex items-center justify-center text-xl shadow-md font-bold">\
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>\
+                        </div>\
+                        <h4 class="font-bold text-lg text-orange-900">2. Fungsi Utama Dapur</h4>\
+                        <ul class="text-xs md:text-sm text-gray-700 space-y-1.5 list-disc list-inside">\
+                            <li>Memberikan rasa, warna, & aroma memikat.</li>\
+                            <li>Meningkatkan kelenjar pencernaan & selera makan.</li>\
+                            <li>Sebagai <strong>Pengawet Alami</strong> (Kunyit, Asam, Jeruk).</li>\
+                            <li>Menghilangkan bau amis pada daging & ikan.</li>\
+                            <li>Memberikan efek sensasi hangat pada tubuh.</li>\
+                        </ul>\
+                    </div>\
+\
+                    <!-- 3. Standar Mutu -->\
+                    <div class="bg-emerald-50/80 rounded-2xl p-6 border-2 border-emerald-200 hover:shadow-lg transition space-y-3">\
+                        <div class="w-12 h-12 bg-emerald-500 text-white rounded-2xl flex items-center justify-center text-xl shadow-md font-bold">\
+                            <i class="fa-solid fa-shield-virus"></i>\
+                        </div>\
+                        <h4 class="font-bold text-lg text-emerald-900">3. Standar Mutu Keamanan</h4>\
+                        <div class="text-xs md:text-sm text-gray-700 space-y-2 leading-relaxed">\
+                            <p>Bumbu & rempah berkualitas harus bersih, segar, tidak berserangga, bebas jamur, dan tidak berbercak putih/hitam.</p>\
+                            <p><strong>Daya Tahan Simpan:</strong> Rempah <em>Utuh</em> tahan <strong>3-5 Tahun</strong>, sedangkan rempah <em>Bubuk</em> tahan <strong>1 Tahun</strong>.</p>\
+                        </div>\
+                    </div>\
+                </div>\
+\
+                <!-- 6 KELOMPOK BAGIAN TUMBUHAN -->\
+                <div class="space-y-4">\
+                    <h4 class="font-header text-xl font-bold text-gray-800 flex items-center gap-2">\
+                        <i class="fa-solid fa-cubes text-amber-600"></i> Klasifikasi 6 Bagian Tumbuhan\
+                    </h4>\
+\
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">\
+                        <!-- Bunga -->\
+                        <div class="bg-white p-3 rounded-2xl border-2 border-amber-200 shadow-sm text-center hover:border-amber-500 transition">\
+                            <img src="https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=200&auto=format&fit=crop&q=80" class="w-full h-24 object-cover rounded-xl mb-2" alt="Bunga">\
+                            <span class="font-bold text-amber-900 text-xs block">1. BUNGA</span>\
+                            <span class="text-[11px] text-gray-600 block">Cengkeh, Bunga Pekak, Telang, Kecombrang</span>\
+                        </div>\
+                        <!-- Buah & Biji -->\
+                        <div class="bg-white p-3 rounded-2xl border-2 border-amber-200 shadow-sm text-center hover:border-amber-500 transition">\
+                            <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=200&auto=format&fit=crop&q=80" class="w-full h-24 object-cover rounded-xl mb-2" alt="Biji">\
+                            <span class="font-bold text-amber-900 text-xs block">2. BUAH & BIJI</span>\
+                            <span class="text-[11px] text-gray-600 block">Lada, Ketumbar, Pala, Kemiri, Cabai, Jintan</span>\
+                        </div>\
+                        <!-- Daun -->\
+                        <div class="bg-white p-3 rounded-2xl border-2 border-amber-200 shadow-sm text-center hover:border-amber-500 transition">\
+                            <img src="https://images.unsplash.com/photo-1608683459068-18e312526e95?w=200&auto=format&fit=crop&q=80" class="w-full h-24 object-cover rounded-xl mb-2" alt="Daun">\
+                            <span class="font-bold text-amber-900 text-xs block">3. DAUN</span>\
+                            <span class="text-[11px] text-gray-600 block">Jeruk Purut, Salam, Kemangi, Peterseli, Kucai</span>\
+                        </div>\
+                        <!-- Batang -->\
+                        <div class="bg-white p-3 rounded-2xl border-2 border-amber-200 shadow-sm text-center hover:border-amber-500 transition">\
+                            <img src="https://images.unsplash.com/photo-1509358271058-acd22cc93898?w=200&auto=format&fit=crop&q=80" class="w-full h-24 object-cover rounded-xl mb-2" alt="Batang">\
+                            <span class="font-bold text-amber-900 text-xs block">4. BATANG</span>\
+                            <span class="text-[11px] text-gray-600 block">Kayu Manis, Sereh, Kayu Secang</span>\
+                        </div>\
+                        <!-- Akar -->\
+                        <div class="bg-white p-3 rounded-2xl border-2 border-amber-200 shadow-sm text-center hover:border-amber-500 transition">\
+                            <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=200&auto=format&fit=crop&q=80" class="w-full h-24 object-cover rounded-xl mb-2" alt="Akar">\
+                            <span class="font-bold text-amber-900 text-xs block">5. AKAR / RIMPANG</span>\
+                            <span class="text-[11px] text-gray-600 block">Jahe, Kunyit, Lengkuas, Kencur</span>\
+                        </div>\
+                        <!-- Umbi Lapis -->\
+                        <div class="bg-white p-3 rounded-2xl border-2 border-amber-200 shadow-sm text-center hover:border-amber-500 transition">\
+                            <img src="https://images.unsplash.com/photo-1618512496248-a07fe83aa8ce?w=200&auto=format&fit=crop&q=80" class="w-full h-24 object-cover rounded-xl mb-2" alt="Umbi">\
+                            <span class="font-bold text-amber-900 text-xs block">6. UMBI LAPIS</span>\
+                            <span class="text-[11px] text-gray-600 block">Bw. Merah, Bw. Putih, Bw. Bombay, Leek</span>\
+                        </div>\
+                    </div>\
+                </div>\
+\
+                <!-- BUMBU DASAR & WADAH SIMPAN -->\
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">\
+                    <!-- Bumbu Dasar -->\
+                    <div class="bg-gradient-to-br from-yellow-50 to-amber-100 p-6 rounded-3xl border-2 border-amber-300 space-y-3">\
+                        <h4 class="font-header font-bold text-amber-900 text-lg flex items-center gap-2">\
+                            <i class="fa-solid fa-bowl-rice text-amber-600"></i> 3 Bumbu Dasar Indonesia\
+                        </h4>\
+                        <div class="space-y-2 text-xs md:text-sm">\
+                            <div class="bg-white p-3 rounded-xl shadow-sm border border-red-200">\
+                                <strong class="text-red-600">Bumbu Dasar Merah:</strong> Cabai + Bw. Merah + Bw. Putih + Garam. (Contoh: Rendang, Balado).\
+                            </div>\
+                            <div class="bg-white p-3 rounded-xl shadow-sm border border-gray-200">\
+                                <strong class="text-gray-800">Bumbu Dasar Putih:</strong> Kemiri + Bw. Merah + Bw. Putih + Garam. (Contoh: Opor, Tumisan).\
+                            </div>\
+                            <div class="bg-white p-3 rounded-xl shadow-sm border border-yellow-300">\
+                                <strong class="text-yellow-600">Bumbu Dasar Kuning:</strong> Kunyit + Kemiri + Bw. Merah + Bw. Putih + Garam. (Contoh: Soto, Acar).\
+                            </div>\
+                        </div>\
+                    </div>\
+\
+                    <!-- Wadah Penyimpanan -->\
+                    <div class="bg-gradient-to-br from-teal-50 to-emerald-100 p-6 rounded-3xl border-2 border-teal-300 space-y-3">\
+                        <h4 class="font-header font-bold text-teal-900 text-lg flex items-center gap-2">\
+                            <i class="fa-solid fa-box-archive text-teal-600"></i> Standar Wadah Penyimpanan\
+                        </h4>\
+                        <div class="grid grid-cols-2 gap-2 text-[11px] md:text-xs">\
+                            <div class="bg-white p-2.5 rounded-xl border border-teal-200 shadow-sm">\
+                                <strong class="text-teal-900 block font-bold">Opaque Glass (Sangat Baik)</strong> Kaca gelap kedap udara, melindungi dari cahaya.\
+                            </div>\
+                            <div class="bg-white p-2.5 rounded-xl border border-teal-200 shadow-sm">\
+                                <strong class="text-teal-900 block font-bold">Clear Glass (Bagus)</strong> Kaca bening, harus disimpan di tempat gelap.\
+                            </div>\
+                            <div class="bg-white p-2.5 rounded-xl border border-teal-200 shadow-sm">\
+                                <strong class="text-teal-900 block font-bold">Metal Tins (Kaleng)</strong> Cocok untuk rempah biji & akar kering.\
+                            </div>\
+                            <div class="bg-white p-2.5 rounded-xl border border-red-200 shadow-sm">\
+                                <strong class="text-red-600 block font-bold">Wadah Kayu / Plastik (Hindari)</strong> Permeabel & menyerap bau sintetis.\
+                            </div>\
+                        </div>\
+                    </div>\
+                </div>\
+\
+            </div>\
+        </section>\
+\
+        <!-- ================= TAB 2: LAB & SIMULASI ================= -->\
+        <section id="tab-aktivitas" class="hidden space-y-6">\
+            <div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl border-2 border-amber-200 space-y-6">\
+                <div class="border-b-2 border-amber-100 pb-4">\
+                    <h3 class="font-header text-2xl font-bold text-amber-900 flex items-center gap-3">\
+                        <i class="fa-solid fa-flask-vial text-amber-600"></i> Laboratorium Simulasi Dapur Kuliner\
+                    </h3>\
+                    <p class="text-xs text-gray-600 mt-1">Uji keputusan teknis pengolahan dan penyimpanan bumbu secara interaktif!</p>\
+                </div>\
+\
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">\
+                    <!-- SIMULASI 1: Sangrai Rempah Biji -->\
+                    <div class="bg-amber-50 p-6 rounded-3xl border-2 border-amber-300 flex flex-col justify-between space-y-4">\
+                        <div>\
+                            <span class="bg-amber-200 text-amber-900 font-bold text-xs px-3 py-1 rounded-full uppercase">Simulasi 1</span>\
+                            <h4 class="font-bold text-lg text-amber-900 mt-2 flex items-center gap-2">\
+                                <i class="fa-solid fa-fire-burner"></i> Ekstraksi Aroma Rempah Biji\
+                            </h4>\
+                            <p class="text-xs text-gray-600 mt-1 mb-4">Pilih metode terbaik untuk mengolah Ketumbar & Jintan agar aroma minyak atsiri keluar maksimal!</p>\
+                            \
+                            <label class="block text-xs font-bold text-gray-700 mb-1">Pilih Teknik Pengolahan:</label>\
+                            <select id="sim-metode" class="w-full p-3 rounded-xl border-2 border-amber-400 font-medium text-xs md:text-sm bg-white">\
+                                <option value="langsung">Langsung Dihaluskan Basah</option>\
+                                <option value="sangrai">Disangrai Tanpa Minyak -> Didinginkan -> Dihaluskan</option>\
+                                <option value="rebus">Direbus dalam Air Banyak</option>\
+                            </select>\
+\
+                            <div id="sim-res-1" class="mt-4 p-4 rounded-2xl text-xs hidden"></div>\
+                        </div>\
+                        <button onclick="runSimulasi1()" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 rounded-2xl shadow-lg transition flex items-center justify-center gap-2">\
+                            <i class="fa-solid fa-gear"></i> Jalankan Simulasi Dapur\
+                        </button>\
+                    </div>\
+\
+                    <!-- SIMULASI 2: Wadah Simpan Keamanan Pangan -->\
+                    <div class="bg-teal-50 p-6 rounded-3xl border-2 border-teal-300 flex flex-col justify-between space-y-4">\
+                        <div>\
+                            <span class="bg-teal-200 text-teal-900 font-bold text-xs px-3 py-1 rounded-full uppercase">Simulasi 2</span>\
+                            <h4 class="font-bold text-lg text-teal-900 mt-2 flex items-center gap-2">\
+                                <i class="fa-solid fa-warehouse"></i> Keamanan Simpan Rempah Kering\
+                            </h4>\
+                            <p class="text-xs text-gray-600 mt-1 mb-4">Pilih kombinasi wadah & lokasi tempat simpan untuk menguji daya tahan rempah!</p>\
+\
+                            <div class="space-y-3">\
+                                <div>\
+                                    <label class="block text-xs font-bold text-gray-700 mb-1">Jenis Wadah:</label>\
+                                    <select id="sim-wadah" class="w-full p-2.5 rounded-xl border-2 border-teal-400 text-xs bg-white">\
+                                        <option value="opaque">Opaque Glass (Kaca Gelap Kedap)</option>\
+                                        <option value="kayu">Wadah Kayu Permeabel</option>\
+                                        <option value="plastik">Plastik Terbuka</option>\
+                                    </select>\
+                                </div>\
+                                <div>\
+                                    <label class="block text-xs font-bold text-gray-700 mb-1">Lokasi Penempatan:</label>\
+                                    <select id="sim-lokasi" class="w-full p-2.5 rounded-xl border-2 border-teal-400 text-xs bg-white">\
+                                        <option value="pantry">Pantry Sejuk & Gelap</option>\
+                                        <option value="kompor">Rak Panas di Atas Kompor</option>\
+                                        <option value="kulkas">Kulkas Lembap</option>\
+                                    </select>\
+                                </div>\
+                            </div>\
+\
+                            <div id="sim-res-2" class="mt-4 p-4 rounded-2xl text-xs hidden"></div>\
+                        </div>\
+                        <button onclick="runSimulasi2()" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 rounded-2xl shadow-lg transition flex items-center justify-center gap-2">\
+                            <i class="fa-solid fa-microscope"></i> Analisis Keamanan Pangan\
+                        </button>\
+                    </div>\
+                </div>\
+            </div>\
+        </section>\
+\
+        <!-- ================= TAB 3: EVALUASI (70 SOAL) ================= -->\
+        <section id="tab-evaluasi" class="hidden space-y-6">\
+            \
+            <!-- CONTROLLER MODA KUIS -->\
+            <div class="bg-white rounded-3xl p-6 shadow-xl border-2 border-amber-200 text-center space-y-4">\
+                <div>\
+                    <h3 class="font-header text-2xl font-bold text-amber-900">ZONA PERMAINAN & KUIS INTERAKTIF</h3>\
+                    <p class="text-xs text-gray-600">Pilih salah satu dari 7 Mode Kuis (Masing-masing 10 Soal = Total 70 Soal Pembelajaran!)</p>\
+                </div>\
+\
+                <!-- 7 BUTTON MODES -->\
+                <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">\
+                    <button onclick="loadQuizCategory('memori')" class="p-3 rounded-2xl border-2 border-amber-400 bg-amber-50 hover:bg-amber-500 hover:text-white transition font-bold text-xs flex flex-col items-center gap-1 shadow">\
+                        <i class="fa-solid fa-brain text-xl text-amber-600"></i>\
+                        <span>1. Memori (10)</span>\
+                    </button>\
+                    <button onclick="loadQuizCategory('numerik')" class="p-3 rounded-2xl border-2 border-blue-400 bg-blue-50 hover:bg-blue-500 hover:text-white transition font-bold text-xs flex flex-col items-center gap-1 shadow">\
+                        <i class="fa-solid fa-calculator text-xl text-blue-600"></i>\
+                        <span>2. Numerik (10)</span>\
+                    </button>\
+                    <button onclick="loadQuizCategory('spasial')" class="p-3 rounded-2xl border-2 border-purple-400 bg-purple-50 hover:bg-purple-500 hover:text-white transition font-bold text-xs flex flex-col items-center gap-1 shadow">\
+                        <i class="fa-solid fa-shapes text-xl text-purple-600"></i>\
+                        <span>3. Spasial (10)</span>\
+                    </button>\
+                    <button onclick="loadQuizCategory('jodoh')" class="p-3 rounded-2xl border-2 border-green-400 bg-green-50 hover:bg-green-500 hover:text-white transition font-bold text-xs flex flex-col items-center gap-1 shadow">\
+                        <i class="fa-solid fa-link text-xl text-green-600"></i>\
+                        <span>4. Jodohkan (10)</span>\
+                    </button>\
+                    <button onclick="loadQuizCategory('pg')" class="p-3 rounded-2xl border-2 border-orange-400 bg-orange-50 hover:bg-orange-500 hover:text-white transition font-bold text-xs flex flex-col items-center gap-1 shadow">\
+                        <i class="fa-solid fa-list-check text-xl text-orange-600"></i>\
+                        <span>5. P. Ganda (10)</span>\
+                    </button>\
+                    <button onclick="loadQuizCategory('drag')" class="p-3 rounded-2xl border-2 border-rose-400 bg-rose-50 hover:bg-rose-500 hover:text-white transition font-bold text-xs flex flex-col items-center gap-1 shadow">\
+                        <i class="fa-solid fa-hand-back-fist text-xl text-rose-600"></i>\
+                        <span>6. Drag/Drop (10)</span>\
+                    </button>\
+                    <button onclick="loadQuizCategory('bs')" class="p-3 rounded-2xl border-2 border-emerald-400 bg-emerald-50 hover:bg-emerald-500 hover:text-white transition font-bold text-xs flex flex-col items-center gap-1 shadow">\
+                        <i class="fa-solid fa-circle-half-stroke text-xl text-emerald-600"></i>\
+                        <span>7. Benar/Salah (10)</span>\
+                    </button>\
+                </div>\
+            </div>\
+\
+            <!-- DISPLAY KUIS ACTIVE WINDOW -->\
+            <div id="quiz-window" class="bg-white rounded-3xl p-6 md:p-8 shadow-xl border-2 border-amber-300 min-h-[350px]">\
+                <div id="quiz-header" class="flex justify-between items-center border-b pb-4 mb-6">\
+                    <h4 id="quiz-title" class="font-header font-bold text-xl text-amber-900">Pilih Moda Kuis Di Atas</h4>\
+                    <div id="quiz-score-badge" class="text-xs font-bold bg-amber-100 text-amber-800 px-4 py-1.5 rounded-full border border-amber-300">\
+                        Skor: 0 / 100\
+                    </div>\
+                </div>\
+\
+                <div id="quiz-body" class="flex flex-col items-center justify-center py-12 text-gray-400 text-center">\
+                    <i class="fa-solid fa-cookie-bite text-6xl text-amber-300 mb-3 animate-bounce"></i>\
+                    <p class="font-semibold text-base text-gray-600">Klik salah satu dari 7 tombol kuis di atas untuk memulainya!</p>\
+                </div>\
+            </div>\
+\
+        </section>\
+\
+    </main>\
+\
+    <!-- FOOTER -->\
+    <footer class="bg-amber-900 text-amber-200 text-center py-4 text-xs border-t-4 border-amber-950 mt-auto">\
+        <p>\'a9 2026 Media Pembelajaran Interaktif Kuliner XII - SMK YPKK 2 Sleman</p>\
+        <p class="text-amber-400 font-semibold mt-0.5">Disusun Oleh: Fezri Tria Prawesthi, S.Pd., Gr.</p>\
+    </footer>\
+\
+    <!-- JAVASCRIPT LOGIC & AUDIO SYNTHESIZER -->\
+    <script>\
+        // WEB AUDIO API SYNTHESIZER (NO EXTERNAL AUDIO NEEDED)\
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();\
+        function playSound(freq, type, duration) \{\
+            try \{\
+                if (audioCtx.state === 'suspended') audioCtx.resume();\
+                const osc = audioCtx.createOscillator();\
+                const gain = audioCtx.createGain();\
+                osc.type = type;\
+                osc.frequency.value = freq;\
+                osc.connect(gain);\
+                gain.connect(audioCtx.destination);\
+                osc.start();\
+                gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + duration);\
+                osc.stop(audioCtx.currentTime + duration);\
+            \} catch(e)\{\}\
+        \}\
+        function playCorrectSound() \{ playSound(587.33, 'sine', 0.2); setTimeout(() => playSound(880, 'sine', 0.3), 100); \}\
+        function playWrongSound() \{ playSound(220, 'sawtooth', 0.3); \}\
+\
+        // NAVIGATION SWITCHER\
+        function switchTab(tabId) \{\
+            document.querySelectorAll('section[id^="tab-"]').forEach(el => el.classList.add('hidden'));\
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('tab-active'));\
+            \
+            document.getElementById('tab-' + tabId).classList.remove('hidden');\
+            document.getElementById('btn-' + tabId).classList.add('tab-active');\
+        \}\
+\
+        // SIMULASI LAB LOGIC\
+        function runSimulasi1() \{\
+            const val = document.getElementById('sim-metode').value;\
+            const res = document.getElementById('sim-res-1');\
+            res.classList.remove('hidden');\
+            if(val === 'sangrai') \{\
+                playCorrectSound();\
+                res.className = "mt-4 p-4 rounded-2xl bg-green-100 border border-green-300 text-green-900 text-xs md:text-sm";\
+                res.innerHTML = "<strong><i class='fa-solid fa-circle-check'></i> TEKNIK TEPAT!</strong> Menyangrai rempah biji (jintan/ketumbar) tanpa minyak pada panas sedang akan memicu penguapan minyak atsiri secara alami, sehingga menghasilkan aroma sangat wangi sebelum dihaluskan!";\
+            \} else \{\
+                playWrongSound();\
+                res.className = "mt-4 p-4 rounded-2xl bg-red-100 border border-red-300 text-red-900 text-xs md:text-sm";\
+                res.innerHTML = "<strong><i class='fa-solid fa-triangle-exclamation'></i> KURANG TEPAT!</strong> Memasak/menghaluskan langsung tanpa disangrai akan membuat aroma rempah terperangkap dan teksturnya terasa lembek.";\
+            \}\
+        \}\
+\
+        function runSimulasi2() \{\
+            const wadah = document.getElementById('sim-wadah').value;\
+            const lokasi = document.getElementById('sim-lokasi').value;\
+            const res = document.getElementById('sim-res-2');\
+            res.classList.remove('hidden');\
+\
+            if(wadah === 'opaque' && lokasi === 'pantry') \{\
+                playCorrectSound();\
+                res.className = "mt-4 p-4 rounded-2xl bg-green-100 border border-green-300 text-green-900 text-xs md:text-sm";\
+                res.innerHTML = "<strong><i class='fa-solid fa-award'></i> KOMBINASI STANDAR INDUSTRI!</strong> Botol Opaque Glass melindungi dari paparan sinar UV, dan tempat sejuk mencegah oksidasi minyak atsiri. Rempah utuh tahan hingga 3-5 tahun!";\
+            \} else \{\
+                playWrongSound();\
+                res.className = "mt-4 p-4 rounded-2xl bg-amber-100 border border-amber-300 text-amber-900 text-xs md:text-sm";\
+                res.innerHTML = "<strong><i class='fa-solid fa-circle-exclamation'></i> PERINGATAN MUTU!</strong> " +\
+                    (lokasi === 'kompor' ? "Suhu kompor yang panas akan menguapkan aroma dengan cepat. " : "") +\
+                    (lokasi === 'kulkas' ? "Kelembapan kulkas dapat memicu tumbuhnya jamur/bercak. " : "") +\
+                    (wadah === 'kayu' ? "Wadah kayu menyerap bau minyak atsiri. " : "") +\
+                    "Gunakan wadah kaca kedap dan simpan di pantry sejuk & gelap!";\
+            \}\
+        \}\
+\
+        // ==========================================\
+        // QUIZ DATABASE (70 SOAL LENGKAP)\
+        // ==========================================\
+        const quizDatabase = \{\
+            memori: [\
+                \{ pairs: [ \{ name: "Jahe", type: "Akar" \}, \{ name: "Cengkeh", type: "Bunga" \}, \{ name: "Kayu Manis", type: "Batang" \}, \{ name: "Bawang Bombay", type: "Umbi Lapis" \}, \{ name: "Peterseli", type: "Daun" \} ] \}\
+            ],\
+            numerik: [\
+                \{ q: "1. Berapa lama daya tahan aroma terbaik untuk rempah BUBUK jika disimpan dengan benar?", options: ["1 Tahun", "3-5 Tahun", "10 Tahun", "1 Bulan"], correct: 0 \},\
+                \{ q: "2. Berapa lama daya tahan kesegaran rempah UTUH jika disimpan dalam wadah kedap?", options: ["6 Bulan", "1 Tahun", "3 sampai 5 Tahun", "10 Tahun"], correct: 2 \},\
+                \{ q: "3. Berapa perkiraan waktu panen tanaman kunyit sejak mulai ditanam?", options: ["2 Bulan", "6 Bulan", "12 Bulan", "18 Bulan"], correct: 1 \},\
+                \{ q: "4. Kandungan minyak atsiri berbau tajam pada kulit kayu manis adalah sebesar...", options: ["1%", "5%", "10%", "20%"], correct: 0 \},\
+                \{ q: "5. Berapa ribu tahun yang lalu kayu manis sudah digunakan di Mesir Kuno?", options: ["1000 tahun", "2000 tahun", "5000 tahun", "10000 tahun"], correct: 2 \},\
+                \{ q: "6. Bumbu dapur dikelompokkan menjadi berapa bagian berdasarkan organ tumbuhan?", options: ["4 Kelompok", "6 Kelompok", "8 Kelompok", "10 Kelompok"], correct: 1 \},\
+                \{ q: "7. Daun jeruk purut kering yang disimpan dapat bertahan kurang dari...", options: ["1 Bulan", "6 Bulan", "1 Tahun", "2 Tahun"], correct: 2 \},\
+                \{ q: "8. Berapa jenis bumbu dasar utama dalam kuliner Indonesia yang ada di modul?", options: ["2 Jenis", "3 Jenis", "5 Jenis", "7 Jenis"], correct: 1 \},\
+                \{ q: "9. Ada berapa jenis kelompok tanaman seledri yang dibudidayakan secara internasional?", options: ["2 Kelompok", "3 Kelompok", "4 Kelompok", "5 Kelompok"], correct: 1 \},\
+                \{ q: "10. Berapa jenis kapulaga yang umum diperdagangkan di pasar?", options: ["1 Jenis", "2 Jenis (Panjang & Bulat)", "4 Jenis", "5 Jenis"], correct: 1 \}\
+            ],\
+            spasial: [\
+                \{ q: "1. Identifikasi visual Bunga Lawang / Pekak:", shape: "Kelopak berbentuk bintang berwarna cokelat tua", correct: "Bunga Pekak" \},\
+                \{ q: "2. Identifikasi visual Jintan (Cumin):", shape: "Bentuk pipih panjang menyerupai bulir gabah/padi", correct: "Jintan" \},\
+                \{ q: "3. Identifikasi visual Biji Pala (Nutmeg):", shape: "Butiran bulat oval keras bergelombang cokelat", correct: "Biji Pala" \},\
+                \{ q: "4. Identifikasi visual Daun Jeruk Purut:", shape: "Bentuk dua helai daun menyatu berlekuk (seperti angka 8)", correct: "Daun Jeruk Purut" \},\
+                \{ q: "5. Identifikasi visual Kayu Manis:", shape: "Gulungan kulit kayu Kering berwarna cokelat beraroma manis", correct: "Kayu Manis" \},\
+                \{ q: "6. Identifikasi visual Kemiri:", shape: "Butiran bulat agak lonjong berwarna putih kekuningan", correct: "Kemiri" \},\
+                \{ q: "7. Identifikasi visual Bawang Bombay:", shape: "Bulat besar dengan lapisan umbi tebal kaya air", correct: "Bawang Bombay" \},\
+                \{ q: "8. Identifikasi visual Ketumbar:", shape: "Butiran bulat kecil, kulit kasar, berwarna kuning tua", correct: "Ketumbar" \},\
+                \{ q: "9. Identifikasi visual Serai / Sereh:", shape: "Batang bawah bulat putih, bagian atas daun pipih hijau", correct: "Serai" \},\
+                \{ q: "10. Identifikasi visual Kencur:", shape: "Bonggol akar kecil berdaun bulat, daging berserat halus putih", correct: "Kencur" \}\
+            ],\
+            jodoh: [\
+                \{ left: "Kunyit", right: "Pewarna Kuning & Pengawet Alami" \},\
+                \{ left: "Bumbu Merah", right: "Cabai, Bw. Merah, Bw. Putih, Garam" \},\
+                \{ left: "Bumbu Putih", right: "Kemiri, Bw. Merah, Bw. Putih, Garam" \},\
+                \{ left: "Bumbu Kuning", right: "Kunyit, Kemiri, Bw. Merah, Bw. Putih" \},\
+                \{ left: "Opaque Glass", right: "Wadah Kaca Gelap Kedap Cahaya" \},\
+                \{ left: "Poppy Seed", right: "Biji Selasih Hiasan Roti" \},\
+                \{ left: "Lada Putih", right: "Dipanen Saat Tua (Hijau Tua)" \},\
+                \{ left: "Lada Hitam", right: "Dipanen Saat Muda (Hijau Muda)" \},\
+                \{ left: "Wadah Kayu", right: "Permeabel & Menyerap Bau" \},\
+                \{ left: "Peterseli", right: "Daun Keriting Garnish Pasta/Sup" \}\
+            ],\
+            pg: [\
+                \{ q: "1. Apakah perbedaan utama antara rempah (spices) dan bumbu?", options: ["Rempah adalah racikan, bumbu adalah tanaman", "Rempah dari tanaman tunggal, bumbu racikan beberapa rempah/bahan olahan", "Tidak ada perbedaan", "Rempah selalu basah, bumbu selalu kering"], correct: 1 \},\
+                \{ q: "2. Penggunaan perasan jeruk purut/nipis pada ikan bertujuan untuk...", options: ["Menambah rasa pahit", "Meningkatkan kadar air", "Menetralisir bau amis daging & ikan", "Membuat warna ikan jadi hitam"], correct: 2 \},\
+                \{ q: "3. Mengapa tidak disarankan menyimpan bumbu/rempah di rak atas kompor?", options: ["Sangat praktis", "Panas kompor membuat minyak atsiri menguap cepat", "Membuat rempah tambah wangi", "Mencegah serangan serangga"], correct: 1 \},\
+                \{ q: "4. Masakan Rendang dan olahan Balado menggunakan jenis bumbu dasar...", options: ["Bumbu Putih", "Bumbu Kuning", "Bumbu Merah", "Bumbu Hitam"], correct: 2 \},\
+                \{ q: "5. Bumbu yang dipanen sewaktu buah masih muda dan berwarna hijau muda adalah...", options: ["Lada Putih", "Lada Hitam", "Ketumbar", "Jintan"], correct: 1 \},\
+                \{ q: "6. Tanaman sejenis anggrek merambat yang berbentuk menyerupai buncis berwarna cokelat kehitaman adalah...", options: ["Kayu Manis", "Vanili", "Cengkeh", "Pala"], correct: 1 \},\
+                \{ q: "7. Jenis seledri yang tangkai daunnya membesar dan cocok untuk salad adalah...", options: ["Seledri Daun", "Seledri Tangkai (dulce)", "Seledri Umbi", "Seledri Batang"], correct: 1 \},\
+                \{ q: "8. Pengolahan rempah biji seperti ketumbar sebelum dihaluskan sebaiknya...", options: ["Direbus", "Disangrai tanpa minyak", "Didesinfeksi", "Dicuci dengan sabun"], correct: 1 \},\
+                \{ q: "9. Mengapa wadah plastik tidak dianjurkan untuk penyimpanan jangka panjang?", options: ["Terlalu mahal", "Mudah pecah", "Rempah menyerap bau plastik", "Tampak jelek"], correct: 2 \},\
+                \{ q: "10. Untuk mengeluarkan aroma biji pala dan kapulaga, caranya adalah...", options: ["Dihaluskan jadi bubuk halus", "Dimemarkan/dipecahkan", "Dipotong tipis", "Diblender pakai air"], correct: 1 \}\
+            ],\
+            drag: [\
+                \{ item: "Cengkeh", category: "Bunga" \},\
+                \{ item: "Ketumbar", category: "Buah & Biji" \},\
+                \{ item: "Jeruk Purut", category: "Daun" \},\
+                \{ item: "Kayu Manis", category: "Batang" \},\
+                \{ item: "Jahe", category: "Akar" \},\
+                \{ item: "Bawang Merah", category: "Umbi Lapis" \},\
+                \{ item: "Lengkuas", category: "Akar" \},\
+                \{ item: "Peterseli", category: "Daun" \},\
+                \{ item: "Bunga Pekak", category: "Bunga" \},\
+                \{ item: "Serai", category: "Batang" \}\
+            ],\
+            bs: [\
+                \{ q: "1. Rempah utuh memiliki masa simpan aroma lebih lama (3-5 tahun) dibanding rempah bubuk (1 tahun).", ans: true \},\
+                \{ q: "2. Kulkas adalah tempat penyimpanan terbaik dan paling disarankan untuk rempah kering.", ans: false \},\
+                \{ q: "3. Bumbu dasar kuning menggunakan campuran garam, bawang merah, bawang putih, kemiri, dan kunyit.", ans: true \},\
+                \{ q: "4. Lada putih dipanen saat buah lada masih muda.", ans: false \},\
+                \{ q: "5. Kemiri berbentuk bulat lonjong berwarna putih kekuningan dan biasa digunakan pada gado-gado.", ans: true \},\
+                \{ q: "6. Daun kemangi mengandung senyawa sitral yang memberi aroma khas limau.", ans: true \},\
+                \{ q: "7. Bunga telang di zaman modern sangat sering digunakan di luar negeri sebagai pewarna utama.", ans: false \},\
+                \{ q: "8. Menggiling bumbu dengan blender yang akan ditumis sebaiknya menggunakan bantuan air.", ans: false \},\
+                \{ q: "9. Wadah Opaque Glass (kaca gelap) sangat baik karena melindungi bumbu dari paparan cahaya.", ans: true \},\
+                \{ q: "10. Bu Fezri Tria Prawesthi mengajar mata pelajaran Hidangan Kontinental di SMK YPKK 2 Sleman.", ans: true \}\
+            ]\
+        \};\
+\
+        let currentScore = 0;\
+\
+        function loadQuizCategory(cat) \{\
+            const body = document.getElementById('quiz-body');\
+            const title = document.getElementById('quiz-title');\
+            currentScore = 0;\
+            document.getElementById('quiz-score-badge').innerText = 'Skor: 0 / 100';\
+\
+            if(cat === 'memori') \{\
+                title.innerText = "Kuis 1: Kartu Memori Pasangan Bumbu & Organ (10 Kartu)";\
+                renderMemoriGame(body);\
+            \} else if(cat === 'numerik') \{\
+                title.innerText = "Kuis 2: Numerik Standar Waktu & Angka Kuliner (10 Soal)";\
+                renderPGQuiz(body, quizDatabase.numerik);\
+            \} else if(cat === 'spasial') \{\
+                title.innerText = "Kuis 3: Spasial Tebak Bentuk & Visual (10 Soal)";\
+                renderSpasialQuiz(body, quizDatabase.spasial);\
+            \} else if(cat === 'jodoh') \{\
+                title.innerText = "Kuis 4: Menjodohkan Istilah & Fungsi (10 Pasang)";\
+                renderJodohQuiz(body, quizDatabase.jodoh);\
+            \} else if(cat === 'pg') \{\
+                title.innerText = "Kuis 5: Pilihan Ganda Teori Modul (10 Soal)";\
+                renderPGQuiz(body, quizDatabase.pg);\
+            \} else if(cat === 'drag') \{\
+                title.innerText = "Kuis 6: Drag & Drop Klasifikasi Organ Tumbuhan (10 Bahan)";\
+                renderDragDropQuiz(body, quizDatabase.drag);\
+            \} else if(cat === 'bs') \{\
+                title.innerText = "Kuis 7: Benar / Salah Keamanan Pangan (10 Soal)";\
+                renderBSQuiz(body, quizDatabase.bs);\
+            \}\
+        \}\
+\
+        // 1. ENGINE MEMORI\
+        function renderMemoriGame(container) \{\
+            const data = quizDatabase.memori[0].pairs;\
+            let cards = [];\
+            data.forEach((p, idx) => \{\
+                cards.push(\{ id: idx, text: p.name, match: idx \});\
+                cards.push(\{ id: idx, text: p.type, match: idx \});\
+            \});\
+            cards.sort(() => Math.random() - 0.5);\
+\
+            container.innerHTML = `\
+                <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 w-full">\
+                    $\{cards.map((c, i) => `\
+                        <div onclick="flipMemoryCard(this, $\{c.match\})" class="mem-card bg-amber-500 hover:bg-amber-600 text-white rounded-2xl h-24 flex items-center justify-center font-bold text-xs sm:text-sm cursor-pointer shadow-lg transform hover:scale-105 transition border-2 border-white text-center p-2" data-match="$\{c.match\}">\
+                            <span>$\{c.text\}</span>\
+                        </div>\
+                    `).join('')\}\
+                </div>\
+            `;\
+        \}\
+\
+        let firstCard = null;\
+        function flipMemoryCard(el, matchId) \{\
+            if(el.classList.contains('matched') || el === firstCard) return;\
+            el.classList.add('bg-amber-800');\
+\
+            if(!firstCard) \{\
+                firstCard = el;\
+            \} else \{\
+                if(firstCard.dataset.match == matchId) \{\
+                    playCorrectSound();\
+                    firstCard.classList.add('matched', '!bg-emerald-600');\
+                    el.classList.add('matched', '!bg-emerald-600');\
+                    firstCard = null;\
+                    currentScore += 10;\
+                    document.getElementById('quiz-score-badge').innerText = `Skor: $\{currentScore\} / 100`;\
+                \} else \{\
+                    playWrongSound();\
+                    setTimeout(() => \{\
+                        firstCard.classList.remove('bg-amber-800');\
+                        el.classList.remove('bg-amber-800');\
+                        firstCard = null;\
+                    \}, 500);\
+                \}\
+            \}\
+        \}\
+\
+        // 2 & 5. ENGINE PG (NUMERIK & TEORI)\
+        function renderPGQuiz(container, questions) \{\
+            container.innerHTML = `\
+                <div class="w-full space-y-6">\
+                    $\{questions.map((q, idx) => `\
+                        <div class="p-4 rounded-2xl bg-amber-50/60 border border-amber-200 text-left">\
+                            <p class="font-bold text-sm text-gray-800 mb-3">$\{q.q\}</p>\
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">\
+                                $\{q.options.map((opt, oIdx) => `\
+                                    <button onclick="checkPGAnswer(this, $\{oIdx\}, $\{q.correct\})" class="p-3 text-left rounded-xl border border-gray-300 bg-white hover:bg-amber-100 transition text-xs font-semibold">\
+                                        $\{opt\}\
+                                    </button>\
+                                `).join('')\}\
+                            </div>\
+                        </div>\
+                    `).join('')\}\
+                </div>\
+            `;\
+        \}\
+\
+        function checkPGAnswer(btn, selected, correct) \{\
+            const parent = btn.parentElement;\
+            Array.from(parent.children).forEach(b => b.disabled = true);\
+\
+            if(selected === correct) \{\
+                playCorrectSound();\
+                btn.className = "p-3 text-left rounded-xl border-2 border-emerald-500 bg-emerald-100 text-emerald-900 font-bold text-xs";\
+                currentScore += 10;\
+            \} else \{\
+                playWrongSound();\
+                btn.className = "p-3 text-left rounded-xl border-2 border-red-500 bg-red-100 text-red-900 font-bold text-xs";\
+            \}\
+            document.getElementById('quiz-score-badge').innerText = `Skor: $\{currentScore\} / 100`;\
+        \}\
+\
+        // 3. ENGINE SPASIAL\
+        function renderSpasialQuiz(container, questions) \{\
+            container.innerHTML = `\
+                <div class="w-full space-y-3">\
+                    $\{questions.map((q, i) => `\
+                        <div class="p-4 bg-purple-50 rounded-2xl border border-purple-200 flex flex-col md:flex-row justify-between items-center gap-3 text-left">\
+                            <div class="text-xs md:text-sm">\
+                                <span class="font-bold text-purple-900">$\{q.q\}</span>\
+                                <p class="text-xs text-gray-600 bg-white p-2 rounded-xl mt-1 border border-purple-100">" $\{q.shape\} "</p>\
+                            </div>\
+                            <button onclick="alert('Jawaban Tepat: $\{q.correct\}'); currentScore += 10; document.getElementById('quiz-score-badge').innerText = 'Skor: ' + currentScore + ' / 100'; playCorrectSound(); this.disabled=true;" class="bg-purple-600 text-white font-bold px-4 py-2 rounded-xl text-xs hover:bg-purple-700 transition flex-shrink-0">\
+                                Verifikasi Jawaban\
+                            </button>\
+                        </div>\
+                    `).join('')\}\
+                </div>\
+            `;\
+        \}\
+\
+        // 4. ENGINE MENJODOHKAN\
+        function renderJodohQuiz(container, pairs) \{\
+            container.innerHTML = `\
+                <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-3">\
+                    $\{pairs.map((p, i) => `\
+                        <div class="p-3 bg-green-50 rounded-2xl border border-green-300 flex justify-between items-center text-xs font-bold gap-2">\
+                            <span class="bg-white px-3 py-2 rounded-xl shadow-sm text-green-900">$\{p.left\}</span>\
+                            <i class="fa-solid fa-arrow-right text-green-600"></i>\
+                            <select onchange="if(this.value==='correct')\{playCorrectSound(); currentScore+=10; document.getElementById('quiz-score-badge').innerText = 'Skor: ' + currentScore + ' / 100'; this.disabled=true;\}else\{playWrongSound();\}" class="p-2 rounded-xl border border-green-400 bg-white text-xs">\
+                                <option value="">-- Pilih Pasangan --</option>\
+                                <option value="correct">$\{p.right\}</option>\
+                                <option value="wrong">Opsi Pengacau Lain</option>\
+                            </select>\
+                        </div>\
+                    `).join('')\}\
+                </div>\
+            `;\
+        \}\
+\
+        // 6. ENGINE DRAG & DROP / CLASSIFICATION\
+        function renderDragDropQuiz(container, items) \{\
+            container.innerHTML = `\
+                <div class="w-full space-y-4 text-left">\
+                    <p class="text-xs text-gray-600 font-medium">Klasifikasikan 10 bahan makanan di bawah ke dalam 6 kelompok tumbuhan yang tepat:</p>\
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">\
+                        $\{items.map((it, i) => `\
+                            <div class="p-3 bg-rose-50 rounded-2xl border border-rose-200 flex justify-between items-center text-xs font-semibold">\
+                                <span>$\{it.item\}</span>\
+                                <select onchange="if(this.value==='$\{it.category\}')\{playCorrectSound(); currentScore+=10; document.getElementById('quiz-score-badge').innerText = 'Skor: ' + currentScore + ' / 100'; this.disabled=true;\}else\{playWrongSound();\}" class="text-xs p-2 rounded-xl border border-rose-300 bg-white">\
+                                    <option value="">Pilih Kelompok</option>\
+                                    <option value="Bunga">Bunga</option>\
+                                    <option value="Buah & Biji">Buah & Biji</option>\
+                                    <option value="Daun">Daun</option>\
+                                    <option value="Batang">Batang</option>\
+                                    <option value="Akar">Akar</option>\
+                                    <option value="Umbi Lapis">Umbi Lapis</option>\
+                                </select>\
+                            </div>\
+                        `).join('')\}\
+                    </div>\
+                </div>\
+            `;\
+        \}\
+\
+        // 7. ENGINE BENAR / SALAH\
+        function renderBSQuiz(container, questions) \{\
+            container.innerHTML = `\
+                <div class="w-full space-y-3 text-left">\
+                    $\{questions.map((q, idx) => `\
+                        <div class="p-4 rounded-2xl bg-emerald-50/60 border border-emerald-200 flex flex-col md:flex-row justify-between items-center gap-3">\
+                            <p class="text-xs md:text-sm font-semibold text-gray-800">$\{q.q\}</p>\
+                            <div class="flex gap-2 flex-shrink-0">\
+                                <button onclick="checkBS(this, true, $\{q.ans\})" class="px-4 py-2 bg-emerald-600 text-white rounded-xl text-xs font-bold hover:bg-emerald-700">BENAR</button>\
+                                <button onclick="checkBS(this, false, $\{q.ans\})" class="px-4 py-2 bg-red-600 text-white rounded-xl text-xs font-bold hover:bg-red-700">SALAH</button>\
+                            </div>\
+                        </div>\
+                    `).join('')\}\
+                </div>\
+            `;\
+        \}\
+\
+        function checkBS(btn, choice, correct) \{\
+            const parent = btn.parentElement;\
+            Array.from(parent.children).forEach(b => b.disabled = true);\
+            if(choice === correct) \{\
+                playCorrectSound();\
+                btn.classList.add('ring-4', 'ring-yellow-400');\
+                currentScore += 10;\
+            \} else \{\
+                playWrongSound();\
+                btn.classList.add('opacity-50');\
+            \}\
+            document.getElementById('quiz-score-badge').innerText = `Skor: $\{currentScore\} / 100`;\
+        \}\
+    </script>\
+</body>\
+</html>\
+```eof\
+\
+### 
+\f1 \uc0\u55357 \u56481 
+\f0  Petunjuk Menjalankan Aplikasi Web:\
+1. Ibu Fezri cukup menekan tombol **Preview** pada panel kanan editor untuk melihat serta menjalankan aplikasinya secara langsung.\
+2. Seluruh simulasi, efek suara audio, serta 70 soal dapat langsung dimainkan bersama para siswa baik dari smartphone maupun PC!}
